@@ -57,4 +57,19 @@ public class CalculadoraTest {
 		Assertions.assertEquals(resultadoEsperado, resultadoObtido);		
 	}
 
+	@Test
+	public void testadivisaocomnumerodivisorigualazero() {
+		Calculadora calculadora = new Calculadora();		
+		int entradaNumero1 = 10;
+		int entradaNumero2 = 0;		
+		int resultadoEsperado = -1;
+		
+		calculadora.dividir(entradaNumero1, entradaNumero2);
+		int resultadoObtido = calculadora.getResultado();
+		
+		Assertions.assertEquals(resultadoEsperado, resultadoObtido);		
+	}
+
+
+
 }
