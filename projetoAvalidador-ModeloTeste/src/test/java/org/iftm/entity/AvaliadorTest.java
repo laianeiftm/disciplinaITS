@@ -15,7 +15,6 @@ public class AvaliadorTest{
 	private Usuario usuario1;
 	private Usuario usuario2;
 	private Usuario usuario3;
-	private Usuario usuario4;
 	private Leilao leilao;
 	private Avaliador avaliador;
 	
@@ -24,7 +23,6 @@ public class AvaliadorTest{
 		usuario1 = new Usuario("Laiane");
 		usuario2 = new Usuario("Laiane");
 		usuario3 = new Usuario("Laiane");
-		usuario4 = new Usuario("Laiane");
 		leilao = new Leilao("Computador Aplle");
 		avaliador = new Avaliador ();	
 		
