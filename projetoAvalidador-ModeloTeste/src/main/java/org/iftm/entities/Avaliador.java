@@ -42,9 +42,14 @@ public class Avaliador {
 	public void avalia1(Leilao leilao) {
 		// lançando a exceção
 		if(leilao.getLances().size() ==0)
-		throw new RuntimeException(
-		"Não é possível avaliar um leilão sem lances"
-		);
-		//resto similar
+		throw new RuntimeException(	"Não é possível avaliar um leilão sem lances");
+		
+		
+		
+		
 	}
+	public List<Lance> getTresMaiores() {
+		// TODO Auto-generated method stub
+		return maiores;
 	}
+}

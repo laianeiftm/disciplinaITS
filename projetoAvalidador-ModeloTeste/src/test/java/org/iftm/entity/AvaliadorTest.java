@@ -1,5 +1,7 @@
 package org.iftm.entity;
+
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,46 +14,47 @@ import org.iftm.entities.Leilao;
 import org.iftm.entities.Usuario;
 import org.junit.jupiter.api.Test;
 
-
 // criando objetos usuario, leilao, e avaliador 
-public class AvaliadorTest{
+public class AvaliadorTest {
 	private Usuario usuario1;
 	private Usuario usuario2;
 	private Usuario usuario3;
 	private Leilao leilao;
 	private Avaliador avaliador;
-	
-	@Test
-	public void meuPrimeiroTeste() {
+
+	@BeforeEach
+	public void instanciarObjetos() {
 		usuario1 = new Usuario("Laiane");
 		usuario2 = new Usuario("Laiane");
 		usuario3 = new Usuario("Laiane");
 		leilao = new Leilao("Computador Aplle");
-		avaliador = new Avaliador ();	
-		
+		avaliador = new Avaliador();
+	}
+
+	@Test
+	public void testarMaiorLancesSemOrdem() {
 		// Criar lance
-		
-		leilao.propoe(new Lance(usuario1,300.0));
-		leilao.propoe(new Lance(usuario2,400.0));
-		leilao.propoe(new Lance(usuario3,250.0));
+
+		leilao.propoe(new Lance(usuario1, 300.0));
+		leilao.propoe(new Lance(usuario2, 400.0));
+		leilao.propoe(new Lance(usuario3, 250.0));
 		double resultadoEsperado = 400;
-		
+
 		// executar
 		avaliador.avalia(leilao);
-		
+
 		// comparar
 		double resultadoObtido = avaliador.getMaiorLance();
 		assertEquals(resultadoEsperado, resultadoObtido, 0.0001);
 	}
-	
-	
-		@Test
-		public void testarMaiorLancesOrdemCrescente() {
+
+	@Test
+	public void testarMaiorLancesOrdemCrescente() {
 
 		// cenário: 3 lances sem ordem
-		leilao.propoe(new Lance(usuario3,250.0));
-		leilao.propoe(new Lance(usuario1,300.0));
-		leilao.propoe(new Lance(usuario2,400.0));
+		leilao.propoe(new Lance(usuario3, 250.0));
+		leilao.propoe(new Lance(usuario1, 300.0));
+		leilao.propoe(new Lance(usuario2, 400.0));
 		double resultadoEsperado1 = 400;
 		// executando a ação
 		avaliador.avalia(leilao);
@@ -59,15 +62,15 @@ public class AvaliadorTest{
 		double resultadoObtido1 = avaliador.getMaiorLance();
 		assertEquals(resultadoEsperado1, resultadoObtido1, 0.0001);
 
-		}
-		
-		@Test
-		public void testarMenorLancesOrdemCrescente() {
+	}
+
+	@Test
+	public void testarMenorLancesOrdemCrescente() {
 
 		// cenário: 3 lances sem ordem
-		leilao.propoe(new Lance(usuario3,250.0));
-		leilao.propoe(new Lance(usuario1,300.0));
-		leilao.propoe(new Lance(usuario2,400.0));
+		leilao.propoe(new Lance(usuario3, 250.0));
+		leilao.propoe(new Lance(usuario1, 300.0));
+		leilao.propoe(new Lance(usuario2, 400.0));
 		double resultadoEsperado = 250;
 		// executando a ação
 		avaliador.avalia(leilao);
@@ -75,14 +78,14 @@ public class AvaliadorTest{
 		double resultadoObtido = avaliador.getMenorLance();
 		assertEquals(resultadoEsperado, resultadoObtido, 0.0001);
 
-		}
-		
-		@Test
-		public void testarMenorLancesSemOrdem() {
+	}
+
+	@Test
+	public void testarMenorLancesSemOrdem() {
 		// cenário: 3 lances sem ordem
-		leilao.propoe(new Lance(usuario1,300.0));
-		leilao.propoe(new Lance(usuario2,400.0));
-		leilao.propoe(new Lance(usuario3,250.0));
+		leilao.propoe(new Lance(usuario1, 300.0));
+		leilao.propoe(new Lance(usuario2, 400.0));
+		leilao.propoe(new Lance(usuario3, 250.0));
 		double resultadoEsperado = 250;
 		// executando a ação
 		avaliador.avalia(leilao);
@@ -90,22 +93,22 @@ public class AvaliadorTest{
 		double resultadoObtido = avaliador.getMenorLance();
 		assertEquals(resultadoEsperado, resultadoObtido, 0.0001);
 
-		}
-		
-		@Test
-		public void testarMenorLancesUmLance() {
+	}
+
+	@Test
+	public void testarMenorLancesUmLance() {
 		// cenário: 3 lances sem ordem
-		leilao.propoe(new Lance(usuario3,250.0));
+		leilao.propoe(new Lance(usuario3, 250.0));
 		double resultadoEsperado = 250;
 		// executando a ação
 		avaliador.avalia(leilao);
 		// comparando a saída com o esperado
 		double resultadoObtido = avaliador.getMenorLance();
 		assertEquals(resultadoEsperado, resultadoObtido, 0.0001);
-		}
-		
-		@Test
-		public void testarTresMaioresLancesOrdemCrescente() {
+	}
+
+	@Test
+	public void testarTresMaioresLancesOrdemCrescente() {
 		leilao.propoe(new Lance(usuario1, 100.0));
 		leilao.propoe(new Lance(usuario2, 200.0));
 		leilao.propoe(new Lance(usuario1, 300.0));
@@ -117,18 +120,15 @@ public class AvaliadorTest{
 		assertEquals(300, maiores.get(1).getValor(), 0.00001);
 		assertEquals(200, maiores.get(2).getValor(), 0.00001);
 
-		}
-		
-		@Test
-		public void naoDeveAvaliarLeiloesSemNenhumLanceDado() {
-			try {
-				avaliador.avalia(leilao);
-			} catch (Exception e) {
-				// tudo ok;
-			}
-		}
-		
-		
 	}
 
+	@Test
+	public void naoDeveAvaliarLeiloesSemNenhumLanceDado() {
+		try {
+			avaliador.avalia(leilao);
+		} catch (Exception e) {
+			// tudo ok;
+		}
+	}
 
+}
