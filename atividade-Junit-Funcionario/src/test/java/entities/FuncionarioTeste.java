@@ -41,24 +41,149 @@ public class FuncionarioTeste {
 	    Assertions.assertEquals(salarioEsperado, salarioObtido);
 	   
 	}
-	/*	
+	
+	
 	//CT02
 	@Test
-	public void testarConstrutorFuncnionarioComvalorhoratrabalhadainvalida(){
-		
-		//Cenário de teste
-	    String nomeValido = "Laiane Ribeiro";
-	    double horasTrabalhadasvalida = 1.0;
-	    double valorHoravalida = 35.0;
-	 	
-		
-		//execução
-		f = new Funcionario(nomeValido,horasTrabalhadasvalida,valorHoravalida);
-		String nomeObtido = f.getNome();
-	    double horastrabalhadasObtidas = f.getHorastrabalhadas();
-	    double valorhorasObtidas = f.getValorhora();
-	    
-
+	public void testarConstrutorFuncionáriocomHorasTrabalhadasInvalidasmenorquequatroporcento() {
+		//cenário de teste
+		    String nomeValido = "Laiane Ribeiro";
+		    double horasTrabalhadasvalida = 40.0;
+		    double valorHorainvalida = 20.0;
+		    double salarioEsperado = 7000;
+						
+		//execução	
+		Assertions.assertThrows(
+				IllegalArgumentException.class, 
+				()->{
+				Funcionario f = new Funcionario(nomeValido, horasTrabalhadasvalida, valorHorainvalida);
+					}
+				);
 	}
+
+	//CT03
+	@Test
+	public void testarConstrutorFuncionáriocomHorasTrabalhadasInvalidasmaiorquedezporcento() {
+		//cenário de teste
+		    String nomeValido = "Laiane Ribeiro";
+		    double horasTrabalhadasvalida = 40.0;
+		    double valorHorainvalida = 150.0;
+		    double salarioEsperado = 7000;
+						
+		//execução	
+		Assertions.assertThrows(
+				IllegalArgumentException.class, 
+				()->{
+				Funcionario f = new Funcionario(nomeValido, horasTrabalhadasvalida, valorHorainvalida);
+					}
+				);
+	}
+
+	
+//CT04
+	@Test
+	public void testarConstrutorFuncionáriocomValorHoraInvalidasMaiorqueQuarentaHoras() {
+		//cenário de teste
+		    String nomeValido = "Laiane Ribeiro";
+		    double horasTrabalhadasinvalida = 50.0;
+		    double valorHoravalida = 50.0;
+		    double salarioEsperado = 7000;
+						
+		//execução	
+		Assertions.assertThrows(
+				IllegalArgumentException.class, 
+				()->{
+				Funcionario f = new Funcionario(nomeValido, horasTrabalhadasinvalida, valorHoravalida);
+					}
+				);
+	}
+
+	
+    //CT05 
+     @Test
+  public void testarConstrutorFuncionáriocomdadosvalidosesalarioinvalido() {
+	//cenário de teste
+	   String nomeValido = "Laiane Ribeiro";
+	    double horasTrabalhadasvalida = 30.0;
+	    double valorHoravalida = 10.0;
+	    double salarioEsperado = 1200;
+					
+	//execução	
+	Assertions.assertThrows(
+			IllegalArgumentException.class, 
+			()->{
+			Funcionario f = new Funcionario(nomeValido, horasTrabalhadasvalida, valorHoravalida);
+				}
+			);
+ }
+     
+   //CT06
+ 	@Test
+ 	public void testarModificarFuncionáriocomValorHoraInvalidasMaiorqueQuarentaHoras() {
+ 		//cenário de teste
+ 	    String nomeValido = "Laiane Ribeiro";
+	    double horasTrabalhadasvalida = 35.0;
+	    double valorHoravalida = 50.0;
+	    double salarioEsperado = 7000;
+	 	Funcionario f = new	Funcionario(nomeValido, horasTrabalhadasvalida, valorHoravalida);
+	 	
+ 		//execução	
+	    double valorHorainvalida = 150.0;
+ 		Assertions.assertThrows(
+ 				IllegalArgumentException.class, 
+ 				()->{
+ 				f.setValorhora(valorHorainvalida);
+ 					}
+ 				);
+ 	}
+
+       
+    //CT07
+  	@Test
+  	public void testarModificarFuncionáriocomHorastrabalhadasinvalidasmaiorquedezporcento() {
+  		//cenário de teste
+  	    String nomeValido = "Laiane Ribeiro";
+ 	    double horasTrabalhadasvalida = 35.0;
+ 	    double valorHoravalida = 50.0;
+ 	    double salarioEsperado = 7000;
+ 	 	Funcionario f = new	Funcionario(nomeValido, horasTrabalhadasvalida, valorHoravalida);
+ 	 	
+  		//execução	
+ 	    double horastrabalhadasinvalidas = 50.0;
+  		Assertions.assertThrows(
+  				IllegalArgumentException.class, 
+  				()->{
+  				f.setHorastrabalhadas(horastrabalhadasinvalidas);
+  					}
+  				);
+  	}
+
+    //CT08
+  	@Test
+  	public void testarModificarFuncionáriocomHorastrabalhadasinvalidasmenorquequatroporcento() {
+  		//cenário de teste
+  	    String nomeValido = "Laiane Ribeiro";
+ 	    double horasTrabalhadasvalida = 35.0;
+ 	    double valorHoravalida = 50.0;
+ 	    double salarioEsperado = 7000;
+ 	 	Funcionario f = new	Funcionario(nomeValido, horasTrabalhadasvalida, valorHoravalida);
+ 	 	
+  		//execução	
+ 	    double valorhorainvalida = 20.0;
+  		Assertions.assertThrows(
+  				IllegalArgumentException.class, 
+  				()->{
+  				f.setValorhora(valorhorainvalida);
+  					}
+  				);
+  	}       
+     
+      
+     
+     
+     
+     
 }
-*/
+
+
+

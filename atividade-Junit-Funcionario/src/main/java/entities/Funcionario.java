@@ -11,15 +11,9 @@ public class Funcionario {
 
 	
 	public Funcionario (String nome, double horastrabalhadas, double valorhora) {
-			if (horastrabalhadas > VALORMAXIMO_HORASTRABALHADAS) {
-				throw new IllegalArgumentException("O Valor máximo de horas trabalhadas é 40");
-				}
-			if (valorhora < LIMITE_INFERIOR_VALORPORHORA || valorhora > LIMITE_SUPERIOR_VALORPORHORA) {
-				throw new IllegalArgumentException("O valor por hora precisa ser entre 4% e 10% do salário mínimo");
-			}
 		this.nome = nome;
-		this.horastrabalhadas = horastrabalhadas;
-		this.valorhora = valorhora;
+		this.horastrabalhadas = validahorastrabalhadas(horastrabalhadas);
+		this.valorhora = validavalorhora(valorhora);
 	}
 
 
@@ -39,7 +33,7 @@ public class Funcionario {
 
 
 	public void setHorastrabalhadas(double horastrabalhadas) {
-		this.horastrabalhadas = horastrabalhadas;
+		this.horastrabalhadas = validahorastrabalhadas(horastrabalhadas);
 	}
 
 
@@ -48,13 +42,11 @@ public class Funcionario {
 	}
 
 
-	public void setValorhora(int valorhora) {
-		this.valorhora = valorhora;
+	public void setValorhora(double valorhora) {
+		this.valorhora = validavalorhora(valorhora);
 	}
 	
-	// public boolean estaAprovado() {
-	//	return (valor < NOTA_MINIMA || frequencia < FREQUENCIA_MINIMA ? false : true);
-	//}
+
 	public double CalcularPagamento() {
 		double salario=(horastrabalhadas * valorhora *4 );
 		if (salario < 1212.00) {
@@ -63,5 +55,17 @@ public class Funcionario {
 	    return (salario);
 	}
 
-
+	public static double validahorastrabalhadas(double horastrabalhadas) {
+		if (horastrabalhadas > VALORMAXIMO_HORASTRABALHADAS) {
+			throw new IllegalArgumentException("O Valor máximo de horas trabalhadas é 40");
+			}
+		return horastrabalhadas;
+}
+	public static double validavalorhora(double valorhora) {
+	    if (valorhora < LIMITE_INFERIOR_VALORPORHORA || valorhora > LIMITE_SUPERIOR_VALORPORHORA) {
+		throw new IllegalArgumentException("O valor por hora precisa ser entre 4% e 10% do salário mínimo");
+	    }
+	return valorhora;
+}
+	
 }
