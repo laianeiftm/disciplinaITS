@@ -17,6 +17,12 @@ public class Funcionario {
 	}
 
 
+	public Funcionario(String nomeValido, double horasTrabalhadasvalida, double valorHoravalida,
+			double despesasadicionais) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String getNome() {
 		return nome;
 	}
