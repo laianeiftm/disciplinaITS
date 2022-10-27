@@ -14,12 +14,12 @@ public class FuncionarioTerceirizadoTeste {
 		    String nomeValido = "Laiane Ribeiro";
 		    double horasTrabalhadasvalida = 35.0;
 		    double valorHoravalida = 50.0;
-		    double salarioEsperado = 7000;
+		    double salarioEsperado = 7880;
 		    double despesasadicionaisvalidas = 800;
-		 	Funcionario f;	
+		 	FuncionarioTerceirizado f;	
 			
 			//execução
-			f = new Funcionario(nomeValido,horasTrabalhadasvalida,valorHoravalida, despesasadicionaisvalidas);
+			f = new FuncionarioTerceirizado(nomeValido,horasTrabalhadasvalida,valorHoravalida, despesasadicionaisvalidas);
 			double salarioObtido = f.CalcularPagamento();
 			String nomeObtido = f.getNome();
 		    double horastrabalhadasObtidas = f.getHorastrabalhadas();
@@ -49,7 +49,7 @@ public class FuncionarioTerceirizadoTeste {
 			Assertions.assertThrows(
 					IllegalArgumentException.class, 
 					()->{
-					Funcionario f = new Funcionario(nomeValido, horasTrabalhadasvalida, valorHoravalida, despesasadicionais);
+					FuncionarioTerceirizado f = new FuncionarioTerceirizado(nomeValido, horasTrabalhadasvalida, valorHoravalida, despesasadicionais);
 						}
 					);
 		}
