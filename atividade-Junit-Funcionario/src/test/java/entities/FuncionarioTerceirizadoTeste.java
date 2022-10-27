@@ -61,7 +61,6 @@ public class FuncionarioTerceirizadoTeste {
 		String nomeValido = "Laiane Ribeiro";
 		double horasTrabalhadasvalida = 35.0;
 		double valorHoravalida = 50.0;
-		double salarioEsperado = 7880;
 		double despesasadicionaisvalidas = 800;
 		FuncionarioTerceirizado f = new FuncionarioTerceirizado(nomeValido, horasTrabalhadasvalida, valorHoravalida,
 				despesasadicionaisvalidas);
