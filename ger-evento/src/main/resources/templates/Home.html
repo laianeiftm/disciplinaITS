@@ -7,7 +7,7 @@
 	<div th:replace="~{layoutBase :: navbar}"></div>
 	<div class="container mb-2">
 		<!-- Modificar -->
-		<h1>Veterinarios</h1>
+		<h1>Cadastro de Profissionais (Professores)</h1>
 		<table class="table table-light">
 			<tr class="table-dark">
 				<th></th>
@@ -21,12 +21,12 @@
 			<!-- Modificar -->
 			<tr th:each="prof : ${profissionais}">
 				<th scope="row"></th>
-				<td><span th:text="${prof.codprofissional}"></span></td>
-				<td><span th:text="${prof.linklattes}"></span></td>
-				<td><span th:text="${prof.minicurriculo}"></td>
-						<td class="buttons "><a th:href="@{form/{id}(id=${vet.id})}"
+				<td><span th:text="${prof.codProfissional}"></span></td>
+				<td><span th:text="${prof.linkLates}"></span></td>
+				<td><span th:text="${prof.miniCurriculo}"></td>
+						<td class="buttons "><a th:href="@{form/{id}(id=${prof.codProfissional})}"
 					th:method="get" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-					<a th:href="@{delete/{id}(id=${vet.id})}" th:method="delete"
+					<a th:href="@{delete/{id}(id=${prof.codProfissional})}" th:method="delete"
 					class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
 			</tr>
 		</table>

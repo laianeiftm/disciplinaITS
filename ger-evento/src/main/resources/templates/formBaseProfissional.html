@@ -1,0 +1,19 @@
+<!-- Esse fragmento conterá o formulário com todos os campos comuns a um veterinário, precisará modificar para o seu projeto-->
+<div th:fragment="form">
+
+    <!-- Essa div conterá o linkLates.-->
+    <!-- PlaceHolder é o valor padrão-->
+    <!-- type linkLates permite definir um campo de entrada formatado para linkLates-->
+	<div class="form-group">
+		<label for="linkLates" class="form-label">Link Lattes</label> 
+		<input class="form-control" type="text" th:field="*{linkLates}" id="Linklates" required>
+	</div>
+
+	<div class="form-group">
+		<label for="miniCurriculo" class="form-label">Mini Curriculo</label>
+		<input class="form-control" type="text"	th:field="*{miniCurriculo}" id="miniCurriculo" required>
+	</div>
+	
+	
+
+</div>

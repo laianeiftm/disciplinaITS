@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{layoutBase :: head}">
+</head>
+
+<body>
+
+    <div th:replace="~{layoutBase :: navbar}"></div>
+    <div class="container">
+        <h1 class="mb-3">Atualizar informacoes</h1>
+        <!-- A principal mudança é na ação requisitada no servidor, agora iremos utilizar a ação update, passando o id do veterinário, além do próprio objeto veterinário-->
+        <form action="/home" th:object="${profissional}" th:action="@{/update/{id}(id=${profissional.codProfissional})}" method="post">
+        
+			<div th:replace="~{formBaseProfissional :: form}"></div>
+			
+			<div class="col-12 mt-2">
+                <button type="submit" class="btn btn-dark">Atualizar</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

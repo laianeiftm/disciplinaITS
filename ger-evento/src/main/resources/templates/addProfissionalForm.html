@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<!-- chama o fragmento do cabeçalho-->
+<head th:replace="~{layoutBase :: head}">
+</head>
+
+<body>
+  <!-- chama o fragmento da barra de navegação-->
+  <div th:replace="~{layoutBase :: navbar}"></div>
+  <div class="container">
+    <!-- Modificar o título-->
+    <h1 class="mb-3">Cadastrar novo profissional</h1>
+    <!-- modificar o nome do objeto profissional para a sua classe-->
+    <!-- chama o mapeamento add no profissional controller-->
+    <form action="#" th:object="${profissional}" th:action="@{/add}" method="post">
+      <!-- chama o fragmento do formulário-->
+      <div th:replace="~{formBaseProfissional :: form}"></div>
+      
+      <div class="col-12 mt-2">
+        <button type="submit" class="btn btn-dark">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>
